@@ -1,0 +1,88 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="publications" class="py-20 md:py-28 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="reveal text-2xl md:text-3xl text-[var(--color-primary-dark)] mb-4">Publications</h2>
+    <p class="reveal stagger-1 text-gray-500 mb-8">
+      Selected peer-reviewed articles, policy reports, and technical documents.
+    </p>
+
+    <!-- Tabs -->
+    <div class="reveal stagger-2 flex border-b border-gray-200 mb-8 overflow-x-auto">
+      <button class="pub-tab active" data-tab="journals">Journal Articles</button>
+      <button class="pub-tab" data-tab="reports">Reports</button>
+    </div>
+
+    <!-- Journal Articles Panel -->
+    <div id="panel-journals" class="pub-panel active space-y-4">
+      {siteConfig.publications.journals.map((pub, i) => (
+        <div class={`reveal stagger-${Math.min(i + 1, 6)} p-4 md:p-5 rounded-lg border border-gray-100 hover:border-[var(--color-primary-light)]/50 hover:bg-[var(--color-surface-light)] transition-all duration-200`}>
+          <div class="flex items-start gap-3">
+            <span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span>
+            <div>
+              <h3 class="text-sm md:text-base font-medium text-[var(--color-primary-dark)] leading-snug font-['Inter']">
+                {pub.title}
+              </h3>
+              <p class="mt-1.5 text-xs text-gray-400">
+                <span class="font-medium text-gray-500">Flexner N</span>, {pub.coauthors}
+              </p>
+              <p class="mt-1 text-xs text-[var(--color-primary)]">
+                <em>{pub.journal}</em>. {pub.year}.
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+      <a href={siteConfig.social.scholar} target="_blank" rel="noopener"
+         class="inline-flex items-center gap-2 mt-4 text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] link-underline transition-colors">
+        View all on Google Scholar
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+
+    <!-- Reports Panel -->
+    <div id="panel-reports" class="pub-panel space-y-4">
+      {siteConfig.publications.reports.map((report, i) => (
+        <div class={`p-4 md:p-5 rounded-lg border border-gray-100 hover:border-[var(--color-primary-light)]/50 hover:bg-[var(--color-surface-light)] transition-all duration-200`}>
+          <div class="flex items-start gap-3">
+            <span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--color-primary)]"></span>
+            <div>
+              <h3 class="text-sm md:text-base font-medium text-[var(--color-primary-dark)] leading-snug font-['Inter']">
+                {report.title}
+              </h3>
+              <div class="mt-1.5 flex flex-wrap items-center gap-2">
+                <span class="text-xs text-[var(--color-primary)]">{report.org}</span>
+                <span class="text-xs text-gray-300">·</span>
+                <span class="text-xs text-gray-400">{report.year}</span>
+                {report.role === "First Author" && (
+                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium">
+                    First Author
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.pub-tab');
+  const panels = document.querySelectorAll('.pub-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = (tab as HTMLElement).dataset.tab;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById(`panel-${target}`)?.classList.add('active');
+    });
+  });
+</script>

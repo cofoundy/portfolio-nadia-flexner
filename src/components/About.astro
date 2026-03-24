@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "../config";
+---
+
+<section id="about" class="py-20 md:py-28 bg-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="reveal text-2xl md:text-3xl text-[var(--color-primary-dark)] mb-10">About</h2>
+
+    <div class="space-y-5 text-gray-600 leading-relaxed">
+      <p class="reveal stagger-1 text-base md:text-lg">{siteConfig.about.intro}</p>
+      <p class="reveal stagger-2 text-base md:text-lg">{siteConfig.about.mission}</p>
+      <p class="reveal stagger-3 text-base md:text-lg">{siteConfig.about.impact}</p>
+    </div>
+
+    <!-- Expertise pillars -->
+    <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 gap-6">
+      {siteConfig.expertise.map((item, i) => (
+        <div class={`reveal stagger-${i + 1} p-6 rounded-xl bg-[var(--color-surface-light)] border border-[var(--color-primary-light)]/20 card-hover`}>
+          <h3 class="text-base font-semibold text-[var(--color-primary-dark)] font-['Inter'] mb-2">{item.title}</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

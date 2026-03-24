@@ -1,0 +1,39 @@
+---
+import { siteConfig } from "../config";
+
+const regions = [
+  { name: "Americas", countries: siteConfig.globalReach.americas, icon: "🌎" },
+  { name: "Asia", countries: siteConfig.globalReach.asia, icon: "🌏" },
+  { name: "Africa", countries: siteConfig.globalReach.africa, icon: "🌍" },
+  { name: "Europe & Other", countries: siteConfig.globalReach.europe, icon: "🌍" },
+];
+---
+
+<section id="research" class="py-20 md:py-28 bg-[var(--color-surface)]">
+  <div class="max-w-4xl mx-auto px-6">
+    <h2 class="reveal text-2xl md:text-3xl text-[var(--color-primary-dark)] mb-4">Global Reach</h2>
+    <p class="reveal stagger-1 text-gray-500 mb-12 max-w-2xl">
+      Technical assistance, research, and policy advocacy across {
+        siteConfig.globalReach.americas.length +
+        siteConfig.globalReach.asia.length +
+        siteConfig.globalReach.africa.length +
+        siteConfig.globalReach.europe.length
+      } countries and 4 continents.
+    </p>
+
+    <div class="space-y-10">
+      {regions.map((region, i) => (
+        <div class={`reveal stagger-${i + 1}`}>
+          <h3 class="text-sm font-semibold text-[var(--color-primary)] uppercase tracking-wider mb-4 font-['Inter']">
+            <span class="mr-2">{region.icon}</span>{region.name}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {region.countries.map((country) => (
+              <span class="country-pill">{country}</span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

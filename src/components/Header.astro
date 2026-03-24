@@ -1,0 +1,65 @@
+---
+import { siteConfig } from "../config";
+---
+
+<!-- Mobile top bar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-[var(--color-primary-light)]/20 md:hidden">
+  <div class="flex items-center justify-between px-4 py-3">
+    <a href="#" class="font-['DM_Serif_Display'] text-lg text-[var(--color-primary-dark)]">
+      NF
+    </a>
+    <button id="mobile-toggle" class="p-2 text-[var(--color-primary-dark)]" aria-label="Toggle menu">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <nav id="mobile-nav" class="hidden border-t border-[var(--color-primary-light)]/20 bg-white">
+    <a href="#about" class="block px-6 py-3 text-sm text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)]">About</a>
+    <a href="#research" class="block px-6 py-3 text-sm text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)]">Research</a>
+    <a href="#publications" class="block px-6 py-3 text-sm text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)]">Publications</a>
+    <a href="#experience" class="block px-6 py-3 text-sm text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)]">Experience</a>
+    <a href="#contact" class="block px-6 py-3 text-sm text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)]">Contact</a>
+  </nav>
+</header>
+
+<!-- Desktop floating pill nav -->
+<nav id="desktop-nav" class="hidden md:block fixed top-6 left-1/2 -translate-x-1/2 z-50 opacity-0 pointer-events-none transition-all duration-300">
+  <div class="flex items-center gap-1 bg-white/90 backdrop-blur-md rounded-full px-2 py-1.5 shadow-lg border border-[var(--color-primary-light)]/20">
+    <a href="#" class="px-3 py-1.5 rounded-full text-sm font-medium text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)] transition-colors">NF</a>
+    <a href="#about" class="px-3 py-1.5 rounded-full text-sm text-gray-600 hover:text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)] transition-colors">About</a>
+    <a href="#research" class="px-3 py-1.5 rounded-full text-sm text-gray-600 hover:text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)] transition-colors">Research</a>
+    <a href="#publications" class="px-3 py-1.5 rounded-full text-sm text-gray-600 hover:text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)] transition-colors">Publications</a>
+    <a href="#experience" class="px-3 py-1.5 rounded-full text-sm text-gray-600 hover:text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)] transition-colors">Experience</a>
+    <a href="#contact" class="px-3 py-1.5 rounded-full text-sm text-gray-600 hover:text-[var(--color-primary-dark)] hover:bg-[var(--color-surface)] transition-colors">Contact</a>
+  </div>
+</nav>
+
+<script>
+  // Mobile toggle
+  const toggle = document.getElementById('mobile-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  toggle?.addEventListener('click', () => {
+    mobileNav?.classList.toggle('hidden');
+  });
+
+  // Close mobile nav on link click
+  mobileNav?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => mobileNav?.classList.add('hidden'));
+  });
+
+  // Desktop pill nav show/hide on scroll
+  const desktopNav = document.getElementById('desktop-nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (scrollY > 400) {
+      desktopNav?.classList.remove('opacity-0', 'pointer-events-none');
+      desktopNav?.classList.add('opacity-100', 'pointer-events-auto');
+    } else {
+      desktopNav?.classList.add('opacity-0', 'pointer-events-none');
+      desktopNav?.classList.remove('opacity-100', 'pointer-events-auto');
+    }
+    lastScroll = scrollY;
+  });
+</script>
