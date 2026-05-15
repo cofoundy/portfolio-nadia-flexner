@@ -1,88 +1,134 @@
 ---
 import { siteConfig } from "../config";
+
+// Featured: 3 most representative publications (recent + high-impact + signal range)
+const featured = [
+  {
+    year: 2025,
+    title: "Estimating the dietary and health impact of implementing mandatory front-of-package nutrient disclosures in the US",
+    journal: "PLOS ONE",
+    role: "Co-Author",
+    tag: "Front-of-Pack Labeling",
+  },
+  {
+    year: 2025,
+    title: "The potential health impact and healthcare cost savings of different sodium reduction strategies in Canada",
+    journal: "BMC Public Health",
+    role: "First Author",
+    tag: "Sodium Policy",
+  },
+  {
+    year: 2023,
+    title: "Mapping dietary salt/sodium reduction policies and initiatives in the Region of the Americas",
+    journal: "PAHO/WHO Report",
+    role: "First Author",
+    tag: "Regional Policy",
+  },
+];
+
+const topics = [
+  "Sodium Reduction Policy",
+  "Front-of-Pack Labeling",
+  "NOVA Classification",
+  "Nutrient Profiling",
+  "Dietary Modeling",
+  "Trans-Fat Elimination",
+];
+
+const journalCount = siteConfig.publications.journals.length;
+const reportCount = siteConfig.publications.reports.length;
 ---
 
 <section id="publications" class="py-20 md:py-28 bg-white">
-  <div class="max-w-4xl mx-auto px-6">
-    <h2 class="reveal text-2xl md:text-3xl text-[var(--color-primary-dark)] mb-4">Publications</h2>
-    <p class="reveal stagger-1 text-gray-500 mb-8">
-      Selected peer-reviewed articles, policy reports, and technical documents.
-    </p>
+  <div class="max-w-6xl mx-auto px-6">
 
-    <!-- Tabs -->
-    <div class="reveal stagger-2 flex border-b border-gray-200 mb-8 overflow-x-auto">
-      <button class="pub-tab active" data-tab="journals">Journal Articles</button>
-      <button class="pub-tab" data-tab="reports">Reports</button>
+    <!-- Header -->
+    <div class="text-center mb-12 md:mb-16">
+      <p class="reveal text-xs uppercase tracking-[0.2em] text-[var(--color-primary)] mb-3">Research</p>
+      <h2 class="reveal stagger-1 text-3xl md:text-4xl text-[var(--color-primary-dark)] font-['DM_Serif_Display']">Publications & Impact</h2>
+      <p class="reveal stagger-2 mt-4 text-base text-gray-500 max-w-2xl mx-auto">
+        Peer-reviewed research and policy reports translating evidence into action across {siteConfig.publications.reports.length > 0 ? "25+ countries" : "global health systems"}.
+      </p>
     </div>
 
-    <!-- Journal Articles Panel -->
-    <div id="panel-journals" class="pub-panel active space-y-4">
-      {siteConfig.publications.journals.map((pub, i) => (
-        <div class={`reveal stagger-${Math.min(i + 1, 6)} p-4 md:p-5 rounded-lg border border-gray-100 hover:border-[var(--color-primary-light)]/50 hover:bg-[var(--color-surface-light)] transition-all duration-200`}>
-          <div class="flex items-start gap-3">
-            <span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]"></span>
-            <div>
-              <h3 class="text-sm md:text-base font-medium text-[var(--color-primary-dark)] leading-snug font-['Inter']">
-                {pub.title}
-              </h3>
-              <p class="mt-1.5 text-xs text-gray-400">
-                <span class="font-medium text-gray-500">Flexner N</span>, {pub.coauthors}
-              </p>
-              <p class="mt-1 text-xs text-[var(--color-primary)]">
-                <em>{pub.journal}</em>. {pub.year}.
-              </p>
-            </div>
+    <!-- Impact stat band -->
+    <div class="reveal stagger-3 grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--color-primary-light)]/20 rounded-2xl overflow-hidden mb-16 md:mb-20 border border-[var(--color-primary-light)]/30">
+      <div class="bg-[var(--color-surface-light)] px-6 py-7 md:py-9 text-center">
+        <div class="text-3xl md:text-4xl font-['DM_Serif_Display'] text-[var(--color-primary-dark)]">296<span class="text-[var(--color-accent)]">+</span></div>
+        <div class="mt-2 text-[10px] md:text-xs uppercase tracking-[0.15em] text-gray-500">Citations</div>
+      </div>
+      <div class="bg-[var(--color-surface-light)] px-6 py-7 md:py-9 text-center">
+        <div class="text-3xl md:text-4xl font-['DM_Serif_Display'] text-[var(--color-primary-dark)]">{journalCount}<span class="text-[var(--color-accent)]">+</span></div>
+        <div class="mt-2 text-[10px] md:text-xs uppercase tracking-[0.15em] text-gray-500">Peer-Reviewed</div>
+      </div>
+      <div class="bg-[var(--color-surface-light)] px-6 py-7 md:py-9 text-center">
+        <div class="text-3xl md:text-4xl font-['DM_Serif_Display'] text-[var(--color-primary-dark)]">{reportCount}</div>
+        <div class="mt-2 text-[10px] md:text-xs uppercase tracking-[0.15em] text-gray-500">PAHO/WHO Reports</div>
+      </div>
+      <div class="bg-[var(--color-surface-light)] px-6 py-7 md:py-9 text-center">
+        <div class="text-3xl md:text-4xl font-['DM_Serif_Display'] text-[var(--color-primary-dark)]">25<span class="text-[var(--color-accent)]">+</span></div>
+        <div class="mt-2 text-[10px] md:text-xs uppercase tracking-[0.15em] text-gray-500">Countries</div>
+      </div>
+    </div>
+
+    <!-- Featured publications -->
+    <div class="reveal stagger-1 mb-6">
+      <p class="text-xs uppercase tracking-[0.2em] text-[var(--color-primary)] mb-1">Featured Work</p>
+      <h3 class="text-xl md:text-2xl text-[var(--color-primary-dark)] font-['DM_Serif_Display']">Selected research</h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-14">
+      {featured.map((pub, i) => (
+        <article class={`reveal stagger-${i + 2} group relative bg-white border border-gray-100 rounded-2xl p-7 md:p-8 hover:border-[var(--color-primary-light)] hover:shadow-[0_10px_40px_-15px_rgba(99,102,181,0.25)] transition-all duration-300 flex flex-col`}>
+          <!-- Year -->
+          <div class="flex items-baseline justify-between mb-6">
+            <span class="text-5xl md:text-6xl font-['DM_Serif_Display'] text-[var(--color-primary-dark)] leading-none">{pub.year}</span>
+            <span class="text-[10px] uppercase tracking-[0.15em] text-[var(--color-accent)] font-medium">{pub.role}</span>
           </div>
-        </div>
+
+          <!-- Tag chip -->
+          <span class="inline-flex self-start text-[10px] uppercase tracking-wider px-2.5 py-1 rounded-full bg-[var(--color-surface)] text-[var(--color-primary)] mb-4 font-medium">
+            {pub.tag}
+          </span>
+
+          <!-- Title -->
+          <h4 class="text-sm md:text-base text-gray-800 leading-relaxed flex-1 font-['Inter']">
+            {pub.title}
+          </h4>
+
+          <!-- Journal -->
+          <div class="mt-6 pt-5 border-t border-gray-100 flex items-center justify-between">
+            <em class="text-xs md:text-sm text-[var(--color-primary)] not-italic font-medium">{pub.journal}</em>
+            <svg class="w-4 h-4 text-gray-300 group-hover:text-[var(--color-primary)] group-hover:translate-x-1 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </div>
+        </article>
       ))}
+    </div>
+
+    <!-- Research focus chips -->
+    <div class="reveal stagger-1 mb-12">
+      <p class="text-xs uppercase tracking-[0.2em] text-[var(--color-primary)] mb-4 text-center md:text-left">Research Focus</p>
+      <div class="flex flex-wrap justify-center md:justify-start gap-2">
+        {topics.map((topic) => (
+          <span class="text-xs md:text-sm px-4 py-2 rounded-full bg-[var(--color-surface-light)] text-[var(--color-primary-dark)] border border-[var(--color-primary-light)]/30">
+            {topic}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA: View all -->
+    <div class="reveal stagger-2 text-center">
       <a href={siteConfig.social.scholar} target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 mt-4 text-sm text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] link-underline transition-colors">
-        View all on Google Scholar
+         class="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-[var(--color-primary-dark)] text-white text-sm font-medium hover:bg-[var(--color-primary)] transition-colors shadow-lg shadow-[var(--color-primary)]/20">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 100 14 7 7 0 000-14z"/></svg>
+        View all {journalCount}+ publications on Google Scholar
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
+      <p class="mt-4 text-xs text-gray-400">
+        Full list includes papers in <em>BMC Public Health, PLOS ONE, Frontiers in Nutrition, Advances in Nutrition, Nutrients, Public Health Nutrition</em>
+      </p>
     </div>
 
-    <!-- Reports Panel -->
-    <div id="panel-reports" class="pub-panel space-y-4">
-      {siteConfig.publications.reports.map((report, i) => (
-        <div class={`p-4 md:p-5 rounded-lg border border-gray-100 hover:border-[var(--color-primary-light)]/50 hover:bg-[var(--color-surface-light)] transition-all duration-200`}>
-          <div class="flex items-start gap-3">
-            <span class="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-[var(--color-primary)]"></span>
-            <div>
-              <h3 class="text-sm md:text-base font-medium text-[var(--color-primary-dark)] leading-snug font-['Inter']">
-                {report.title}
-              </h3>
-              <div class="mt-1.5 flex flex-wrap items-center gap-2">
-                <span class="text-xs text-[var(--color-primary)]">{report.org}</span>
-                <span class="text-xs text-gray-300">·</span>
-                <span class="text-xs text-gray-400">{report.year}</span>
-                {report.role === "First Author" && (
-                  <span class="text-[10px] px-2 py-0.5 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] font-medium">
-                    First Author
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
   </div>
 </section>
-
-<script>
-  const tabs = document.querySelectorAll('.pub-tab');
-  const panels = document.querySelectorAll('.pub-panel');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = (tab as HTMLElement).dataset.tab;
-
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-
-      tab.classList.add('active');
-      document.getElementById(`panel-${target}`)?.classList.add('active');
-    });
-  });
-</script>

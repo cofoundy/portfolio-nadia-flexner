@@ -23,9 +23,10 @@ export const siteConfig = {
   ],
 
   social: {
-    email: "nadiaflexner1@gmail.com",
+    email: "nflexner@advocacyincubator.org",
     linkedin: "https://www.linkedin.com/in/nadiaflexner/",
     scholar: "https://scholar.google.com/citations?user=56RclvsAAAAJ&hl=en",
+    cv: "/cv.pdf",
   },
 
   about: {

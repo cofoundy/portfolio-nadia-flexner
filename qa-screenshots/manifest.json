@@ -1,0 +1,114 @@
+{
+  "url": "https://nadiaflexner.cofoundy.dev",
+  "timestamp": "2026-05-15T18:47:51.554Z",
+  "desktop": {
+    "viewport": {
+      "width": 1280,
+      "height": 900
+    },
+    "full": {
+      "file": "desktop-full.png",
+      "fileSize": "807KB"
+    },
+    "sections": [
+      {
+        "file": "desktop-hero.png",
+        "section": "hero",
+        "height": 900,
+        "fileSize": "99KB"
+      },
+      {
+        "file": "desktop-about.png",
+        "section": "about",
+        "height": 945,
+        "fileSize": "125KB"
+      },
+      {
+        "file": "desktop-research.png",
+        "section": "research",
+        "height": 812,
+        "fileSize": "60KB"
+      },
+      {
+        "file": "desktop-publications.png",
+        "section": "publications",
+        "height": 1959,
+        "fileSize": "239KB"
+      },
+      {
+        "file": "desktop-experience.png",
+        "section": "experience",
+        "height": 1076,
+        "fileSize": "156KB"
+      },
+      {
+        "file": "desktop-section-5.png",
+        "section": "section-5",
+        "height": 864,
+        "fileSize": "90KB"
+      },
+      {
+        "file": "desktop-contact.png",
+        "section": "contact",
+        "height": 460,
+        "fileSize": "25KB"
+      }
+    ],
+    "pageHeight": 7015
+  },
+  "mobile": {
+    "viewport": {
+      "width": 375,
+      "height": 812
+    },
+    "full": {
+      "file": "mobile-full.png",
+      "fileSize": "710KB"
+    },
+    "sections": [
+      {
+        "file": "mobile-hero.png",
+        "section": "hero",
+        "height": 846,
+        "fileSize": "66KB"
+      },
+      {
+        "file": "mobile-about.png",
+        "section": "about",
+        "height": 1476,
+        "fileSize": "108KB"
+      },
+      {
+        "file": "mobile-research.png",
+        "section": "research",
+        "height": 1017,
+        "fileSize": "55KB"
+      },
+      {
+        "file": "mobile-publications.png",
+        "section": "publications",
+        "height": 2323,
+        "fileSize": "198KB"
+      },
+      {
+        "file": "mobile-experience.png",
+        "section": "experience",
+        "height": 1608,
+        "fileSize": "132KB"
+      },
+      {
+        "file": "mobile-section-5.png",
+        "section": "section-5",
+        "height": 1418,
+        "fileSize": "87KB"
+      },
+      {
+        "file": "mobile-contact.png",
+        "section": "contact",
+        "height": 436,
+        "fileSize": "19KB"
+      }
+    ],
+    "pageHeight": 9123
+  }
+}
